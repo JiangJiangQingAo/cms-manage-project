@@ -1,15 +1,19 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+	<div id="app">
+		<router-view />
+	</div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-}
+	name: "App",
+};
 </script>
 
-<style>
+<style lang="less">
+html,body,#app {
+	height: 100%;    
+    margin: 0;
+    padding: 0;
+}
 </style>

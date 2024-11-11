@@ -1,6 +1,7 @@
 <template>
-	<component :is="linkProps(to)">
-		<slot/>
+	<!-- eslint-disable vue/require-component-is -->
+	<component v-bind="linkProps(to)">
+		<slot></slot>
 	</component>
 </template>
 
@@ -8,7 +9,7 @@
 import { Validator } from "@bigbighu/cms-utils";
 
 export default {
-	// name:'link',
+	name:'AppLink',
 	// data(){
 	//     return{}
 	// },

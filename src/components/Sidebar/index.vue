@@ -2,17 +2,27 @@
     <div class="has-logo">
         <p @click="goHome" class="system-title">
             <img src="../../assets/logo.png" alt="">
+            CMS页面配置系统
         </p>
+        <!-- <el-button type="primary">主要按钮</el-button> -->
         <el-menu 
-            default-active="activeMenu" 
+            :default-active="activeMenu" 
             :collapse="true"
+            text-color="#bfcbd9"
+            :unique-opened="true"
             background-color="#304156"
             active-text-color="#409eff"
+            :collapse-transition="false"
             mode="vertical"
         >
-        <sidebar-item></sidebar-item>
+        <sidebar-item 
+            v-for="route in permission_routes" 
+            :key="route.path" 
+            :item="route" 
+            :base-path="route.path"
+        >
+        </sidebar-item>
         </el-menu>
-        123
     </div>
 </template>
 
@@ -30,13 +40,14 @@ export default {
     },
     methods:{
         goHome(){
-
+            this.$router.push('/home')
         }
     },
     computed:{
         activeMenu(){
-            const { path, meta } = this.$route
-            console.log(path);
+            const route = this.$route
+            // console.log(this.$route);
+            const { meta, path } = route
             // 判断当前是否定义了默认展开的菜单
             if(meta.activeMenu){
                 return meta.activeMenu
@@ -46,6 +57,57 @@ export default {
     }
 }
 </script>
+
+<style lang="less" scoped>
+    // .menu-nodata {
+    //     padding-top: 25px;
+    //     color: #ccc;
+    //     text-align: center;
+    //     font-size: 14px;
+    // }
+    // .has-logo{
+
+    // }
+    .system-title {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        // background-color: #288ce3;
+        img {
+            margin-right: 5px;
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .el-menu{
+        text-rendering: optimizeLegibility;
+        font-family: Arial,microsoft yahei;
+        color: #333;
+        line-height: 1.5;
+        word-break: break-all;
+        -webkit-font-smoothing: antialiased;
+        font-size: 0;
+        box-sizing: border-box;
+        outline: 0;
+        vertical-align: baseline;
+        background: transparent;
+        padding: 0;
+        font-weight: 400;
+        list-style: none;
+        position: relative;
+        margin: 0;
+        padding-left: 0;
+        border: none;
+        height: 100%;
+        width: 100%!important;
+        background-color: rgb(48, 65, 86);
+    }
+</style>
 
 
 

@@ -1,16 +1,12 @@
 <template>
-    <div class="home">shouye</div>
+    <div>活动管理</div>
 </template>
 
 <script>
 export default{
-    name:'home',
+    name:'acitvity',
     data(){
         return{}
     }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>
